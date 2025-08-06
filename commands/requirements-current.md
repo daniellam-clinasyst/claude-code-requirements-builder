@@ -33,7 +33,7 @@ Display detailed information about the active requirement with visual progress i
 🎯 Overall Progress
 
 Phase 1: Codebase Analysis [██████████] 100% ✅
-Phase 2: Discovery Questions [████████░░] 80% (4/5)
+Phase 2: Discovery Questions [████░░░░░░░░] 33% (2/6)
 Phase 3: Context Gathering [██████████] 100% ✅
 Phase 4: Expert Questions [████░░░░░░] 40% (2/5)
 Phase 5: Requirements Spec [░░░░░░░░░░] 0% ⏳

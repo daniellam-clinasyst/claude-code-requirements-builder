@@ -23,7 +23,7 @@ Show current requirement gathering progress with smart context recap and continu
 You last worked on this [time] ago.
 **Progress**: [Phase] - [X]/[Y] questions answered
 
-[████████░░] 80%
+[████░░░░░░░░] 33% (2/6 questions)
 
 **Key Decisions So Far**:
   ✅ [Important decision 1]

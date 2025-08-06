@@ -57,7 +57,7 @@ Begin gathering requirements for: $ARGUMENTS
    - Handle conditionals: "yes, but only for X" → record condition + follow-up
    - Begin asking questions one at a time with:
      * Smart default based on learning + context
-     * Show progress: [████████░░] 80% (4/5 questions)
+     * Show progress: [████░░░░░░░░] 33% (2/6 questions)
      * Impact indicator: (High/Medium/Low impact question)
    - Only after all questions are asked, record answers in 02-discovery-answers.md as received and update metadata.json. Not before.
 
