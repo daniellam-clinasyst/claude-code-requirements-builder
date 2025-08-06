@@ -1,0 +1,63 @@
+{
+  "id": "crud-api",
+  "name": "CRUD REST API",
+  "description": "Standard Create, Read, Update, Delete API with pagination and filtering",
+  "category": "backend",
+  "complexity": "simple",
+  "pre_answered": {
+    "discovery": {
+      "api_rest": "yes",
+      "api_pagination": "yes",
+      "api_filtering": "yes",
+      "api_sorting": "yes",
+      "gen_ui": "no"
+    },
+    "expert": {
+      "api_cache": "yes",
+      "api_compression": "yes",
+      "api_cors": "yes",
+      "gen_test": "yes",
+      "gen_docs": "yes"
+    }
+  },
+  "focus_questions": [
+    {
+      "id": "api_public",
+      "text": "Will this API be publicly accessible?",
+      "phase": "discovery",
+      "default": "no"
+    },
+    {
+      "id": "api_versioning",
+      "text": "Do you need API versioning support?",
+      "phase": "discovery",
+      "default": "yes"
+    },
+    {
+      "id": "api_batch",
+      "text": "Should the API support batch operations?",
+      "phase": "discovery",
+      "default": "no"
+    }
+  ],
+  "generated_requirements": {
+    "overview": "Implement a RESTful CRUD API with standard operations for resource management.",
+    "includes": [
+      "GET, POST, PUT, PATCH, DELETE endpoints",
+      "Pagination with limit/offset",
+      "Filtering by field values",
+      "Sorting by any field",
+      "Response caching",
+      "CORS configuration",
+      "API documentation"
+    ],
+    "technical_stack": {
+      "backend": ["Express.js or FastAPI", "Database ORM"],
+      "validation": ["Joi or Yup"],
+      "documentation": ["Swagger/OpenAPI"],
+      "testing": ["Jest or Pytest"]
+    }
+  },
+  "time_saved": "30 minutes",
+  "questions_skipped": 10
+}

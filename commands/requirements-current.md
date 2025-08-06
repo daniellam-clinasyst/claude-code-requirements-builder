@@ -1,6 +1,6 @@
-# View Current Requirement
+# View Current Requirement (Opus 4.1 Enhanced)
 
-Display detailed information about the active requirement.
+Display detailed information about the active requirement with visual progress indicators.
 
 ## Instructions:
 
@@ -26,6 +26,22 @@ Display detailed information about the active requirement.
 - 04-detail-questions.md - Expert requirements questions
 - 05-detail-answers.md - User's detailed answers
 - 06-requirements-spec.md - Final requirements document
+
+## Visual Progress Display:
+
+```
+🎯 Overall Progress
+
+Phase 1: Codebase Analysis [██████████] 100% ✅
+Phase 2: Discovery Questions [████████░░] 80% (4/5)
+Phase 3: Context Gathering [██████████] 100% ✅
+Phase 4: Expert Questions [████░░░░░░] 40% (2/5)
+Phase 5: Requirements Spec [░░░░░░░░░░] 0% ⏳
+
+📊Overall: 64% complete
+⏱️ Estimated time remaining: 8 minutes
+📈 Quality Score: Building...
+```
 
 ## Display Format:
 ```

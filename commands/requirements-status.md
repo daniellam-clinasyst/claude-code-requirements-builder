@@ -1,6 +1,6 @@
-# Check Requirements Status
+# Check Requirements Status (Opus 4.1 Enhanced)
 
-Show current requirement gathering progress and continue.
+Show current requirement gathering progress with smart context recap and continue.
 
 ## Instructions:
 
@@ -16,23 +16,39 @@ Show current requirement gathering progress and continue.
    - Load appropriate question/answer files
    - Continue from last unanswered question
 
-## Status Display Format:
+## Smart Context Recap Format:
 ```
-📋 Active Requirement: [name]
-Started: [time ago]
-Phase: [Discovery/Detail]
-Progress: [X/Y] questions answered
+📌 Quick recap: We're gathering requirements for **[feature description]**
 
-[Show last 3 answered questions with responses]
+You last worked on this [time] ago.
+**Progress**: [Phase] - [X]/[Y] questions answered
 
-Next Question:
-[Show next unanswered question with default]
+[████████░░] 80%
+
+**Key Decisions So Far**:
+  ✅ [Important decision 1]
+  ✅ [Important decision 2]
+  ✅ [Important decision 3]
+
+**Implications**:
+  ℹ️ [Technical implication based on answers]
+  💡 [Suggestion based on patterns]
+
+**Next Question** (Impact: [high/medium/low]):
+  "[Question preview]"
+  ([remaining] questions remaining)
+
+💡 Tip: You can use natural language like "definitely" or "not really"
 ```
 
 ## Continuation Flow:
 1. Read next unanswered question from file
-2. Present to user with default
-3. Accept yes/no/idk response
+2. Present with intelligent default from learning system
+3. Accept natural language responses:
+   - Positive: "yes", "y", "definitely", "sure", "👍"
+   - Negative: "no", "n", "nope", "not really", "👎"
+   - Uncertain: "idk", "maybe", "unsure", "depends"
+   - Conditional: "yes, but only for X" → Generate follow-up
 4. Update answer file
 5. Update metadata progress
 6. Move to next question or phase

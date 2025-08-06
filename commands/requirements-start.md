@@ -1,8 +1,32 @@
-# Start Requirements Gathering
+# Start Requirements Gathering (Opus 4.1 Enhanced)
 
 Begin gathering requirements for: $ARGUMENTS
 
+## 🚀 New Features
+- **Natural Language**: Understands "yes", "definitely", "nope", conditional responses
+- **Adaptive Questions**: 3-10 questions based on complexity (not fixed 5)
+- **Smart Templates**: Use `--template auth|crud-api|dashboard` to skip common questions
+- **Learning System**: Defaults improve from your team's patterns
+- **Visual Progress**: Clear indicators throughout the process
+
 ## Full Workflow:
+
+### Phase 0: Template & Complexity Analysis
+0. Check for template flag: If `--template [name]` provided:
+   - Load template from templates/[name].json
+   - Pre-fill common answers
+   - Skip to focus questions only
+   - Show time saved
+
+   Analyze complexity of $ARGUMENTS:
+   - Simple (3-4 questions): "basic", "simple", "standard" keywords
+   - Moderate (5-6 questions): "custom", "enhanced" keywords
+   - Complex (7-10 questions): "enterprise", "comprehensive", "advanced" keywords
+   
+   Detect domain:
+   - Authentication: "auth", "login", "sign" → auth-specific questions
+   - API: "api", "endpoint", "rest" → API-specific questions
+   - UI: "component", "ui", "interface" → UI-specific questions
 
 ### Phase 1: Initial Setup & Codebase Analysis
 1. Create timestamp-based folder: requirements/YYYY-MM-DD-HHMM-[slug]
@@ -17,16 +41,24 @@ Begin gathering requirements for: $ARGUMENTS
    - Understand technology stack
    - Note patterns and conventions
 
-### Phase 2: Context Discovery Questions
-6. Generate the five most important yes/no questions to understand the problem space:
+### Phase 2: Context Discovery Questions (Adaptive)
+6. Generate adaptive number of questions based on complexity to understand the problem space:
    - Questions informed by codebase structure
    - Questions about user interactions and workflows
    - Questions about similar features users currently use
    - Questions about data/content being worked with
    - Questions about external integrations or third-party services
    - Questions about performance or scale expectations
-   - Write all questions to 01-discovery-questions.md with smart defaults
-   - Begin asking questions one at a time proposing the question with a smart default option
+   - Write questions to 01-discovery-questions.md with intelligent defaults
+   - Load learning from .requirements-config.json if exists
+   - Adjust defaults based on >75% team preference
+   - Accept natural language: "yes", "y", "yeah", "definitely", "sure", "👍"
+   - Accept negative: "no", "n", "nope", "not really", "never", "👎"
+   - Handle conditionals: "yes, but only for X" → record condition + follow-up
+   - Begin asking questions one at a time with:
+     * Smart default based on learning + context
+     * Show progress: [████████░░] 80% (4/5 questions)
+     * Impact indicator: (High/Medium/Low impact question)
    - Only after all questions are asked, record answers in 02-discovery-answers.md as received and update metadata.json. Not before.
 
 ### Phase 3: Targeted Context Gathering (Autonomous)
@@ -43,9 +75,11 @@ Begin gathering requirements for: $ARGUMENTS
      - Technical constraints and considerations
      - Integration points identified
 
-### Phase 4: Expert Requirements Questions
-8. Now ask questions like a senior developer who knows the codebase:
-   - Write the top 5 most pressing unanswered detailed yes/no questions to 04-detail-questions.md
+### Phase 4: Expert Requirements Questions (Context-Aware)
+8. Now ask adaptive expert questions based on discovery answers:
+   - Generate 3-7 questions based on complexity and gaps
+   - Skip questions that don't apply based on previous answers
+   - Example: Skip SSO if no role-based access needed to 04-detail-questions.md
    - Questions should be as if you were speaking to the product manager who knows nothing of the code
    - These questions are meant to to clarify expected system behavior now that you have a deep understanding of the code
    - Include smart defaults based on codebase patterns

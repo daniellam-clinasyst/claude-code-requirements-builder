@@ -1,0 +1,63 @@
+{
+  "id": "dashboard-component",
+  "name": "Analytics Dashboard Component",
+  "description": "Interactive dashboard with charts, metrics, and real-time updates",
+  "category": "frontend",
+  "complexity": "moderate",
+  "pre_answered": {
+    "discovery": {
+      "ui_responsive": "yes",
+      "ui_accessible": "yes",
+      "ui_theme": "yes",
+      "gen_ui": "yes",
+      "gen_mobile": "yes"
+    },
+    "expert": {
+      "ui_lazy": "yes",
+      "ui_animation": "yes",
+      "ui_virtualize": "yes",
+      "gen_performance": "yes",
+      "gen_test": "yes"
+    }
+  },
+  "focus_questions": [
+    {
+      "id": "gen_realtime",
+      "text": "Do you need real-time data updates?",
+      "phase": "discovery",
+      "default": "yes"
+    },
+    {
+      "id": "ui_offline",
+      "text": "Should the dashboard work offline?",
+      "phase": "discovery",
+      "default": "no"
+    },
+    {
+      "id": "ui_export",
+      "text": "Do users need to export dashboard data?",
+      "phase": "discovery",
+      "default": "yes"
+    }
+  ],
+  "generated_requirements": {
+    "overview": "Build an interactive analytics dashboard with responsive charts and real-time metrics.",
+    "includes": [
+      "Responsive grid layout",
+      "Multiple chart types (line, bar, pie)",
+      "Real-time data updates",
+      "Dark mode support",
+      "Mobile responsive design",
+      "Accessibility compliance",
+      "Data export functionality"
+    ],
+    "technical_stack": {
+      "frontend": ["React or Vue", "Chart.js or D3.js", "CSS Grid/Flexbox"],
+      "state": ["Redux or Vuex"],
+      "realtime": ["WebSocket or SSE"],
+      "testing": ["React Testing Library", "Cypress"]
+    }
+  },
+  "time_saved": "40 minutes",
+  "questions_skipped": 11
+}

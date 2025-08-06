@@ -1,0 +1,74 @@
+{
+  "id": "authentication",
+  "name": "User Authentication System",
+  "description": "Complete authentication system with login, registration, and password reset",
+  "category": "security",
+  "complexity": "moderate",
+  "pre_answered": {
+    "discovery": {
+      "auth_primary": "yes",
+      "auth_email_verify": "yes",
+      "auth_roles": "yes",
+      "auth_remember": "yes",
+      "gen_ui": "yes",
+      "gen_mobile": "yes"
+    },
+    "expert": {
+      "auth_jwt": "yes",
+      "auth_rate_limit": "yes",
+      "gen_test": "yes",
+      "gen_docs": "yes"
+    }
+  },
+  "focus_questions": [
+    {
+      "id": "auth_social",
+      "text": "Do you need social authentication providers (Google, GitHub, etc.)?",
+      "phase": "discovery",
+      "default": "no"
+    },
+    {
+      "id": "auth_2fa",
+      "text": "Do you need two-factor authentication support?",
+      "phase": "discovery",
+      "default": "no"
+    },
+    {
+      "id": "auth_sso",
+      "text": "Will you need single sign-on (SSO) support?",
+      "phase": "discovery",
+      "default": "no"
+    },
+    {
+      "id": "auth_refresh",
+      "text": "Should we implement refresh token rotation?",
+      "phase": "expert",
+      "default": "yes"
+    },
+    {
+      "id": "auth_lockout",
+      "text": "Should accounts lock after failed login attempts?",
+      "phase": "expert",
+      "default": "yes"
+    }
+  ],
+  "generated_requirements": {
+    "overview": "Implement a secure authentication system with email/password login, registration, and password reset functionality.",
+    "includes": [
+      "User registration with email verification",
+      "Login with remember me functionality",
+      "Password reset via email",
+      "Role-based access control",
+      "JWT token management",
+      "Rate limiting on auth endpoints"
+    ],
+    "technical_stack": {
+      "backend": ["Express.js", "Passport.js", "bcrypt", "jsonwebtoken"],
+      "frontend": ["React", "React Hook Form", "Axios"],
+      "database": ["PostgreSQL or MongoDB"],
+      "email": ["SendGrid or AWS SES"]
+    }
+  },
+  "time_saved": "45 minutes",
+  "questions_skipped": 8
+}

@@ -1,6 +1,6 @@
-# End Requirements Gathering
+# End Requirements Gathering (Opus 4.1 Enhanced)
 
-Finalize the current requirement gathering session.
+Finalize the current requirement gathering session with learning system integration.
 
 ## Instructions:
 
@@ -28,6 +28,17 @@ Finalize the current requirement gathering session.
 - Add defaults for unanswered with "ASSUMED:" prefix
 - Generate implementation hints
 - Update metadata status to "complete"
+- **Save to Learning System**:
+  * Update .requirements-config.json with patterns
+  * Record preference frequencies
+  * Calculate success metrics
+  * Show learning insights:
+    ```
+    📡 Learning Updated:
+    - Detected preference: JWT tokens → NO (80% of time)
+    - Pattern recognized: High security requirements
+    - Recommendation saved for future sessions
+    ```
 
 ### Option 2: Mark Incomplete
 - Update metadata status to "incomplete"
