@@ -1,4 +1,4 @@
-# Start Requirements Gathering (Opus 4.1 Enhanced)
+# Start Requirements Gathering (MCP-Enhanced Edition)
 
 Begin gathering requirements for: $ARGUMENTS
 
@@ -8,11 +8,31 @@ Begin gathering requirements for: $ARGUMENTS
 - **Smart Templates**: Use `--template auth|crud-api|dashboard` to skip common questions
 - **Learning System**: Defaults improve from your team's patterns
 - **Visual Progress**: Clear indicators throughout the process
+- **🧠 MCP Intelligence**: Leverage Claude Code MCPs for deeper analysis
+
+## 🎯 MCP Flags (Optional)
+- `--mcp` - Enable all available MCP servers (recommended for complex requirements)
+- `--mcp-sequential` - Use Sequential-Thinking for systematic analysis
+- `--mcp-context7` - Use Context7 for library/framework validation
+- `--mcp-magic` - Use Magic for UI component prototyping
+- `--mcp-playwright` - Use Playwright for test scenario generation
+- `--no-mcp` - Disable all MCP servers (faster but less comprehensive)
+- `--mcp-auto` - Auto-detect optimal MCPs based on requirement (default)
 
 ## Full Workflow:
 
-### Phase 0: Template & Complexity Analysis
-0. Check for template flag: If `--template [name]` provided:
+### Phase 0: MCP Detection & Complexity Analysis
+0. MCP Server Detection & Configuration:
+   - Load .requirements-mcp-config.json if exists
+   - Check which MCP servers are available:
+     * mcp__sequential_thinking__create_thought_stream (Sequential-Thinking)
+     * mcp__context7__resolve_library_id & get_library_docs (Context7)
+     * mcp__magic__generate_ui_component (Magic)
+     * mcp__playwright__* (Playwright)
+   - Auto-enable MCPs based on complexity and keywords (unless --no-mcp)
+   - Display MCP status: "🧠 MCP Analysis: Sequential ✅ | Context7 ✅ | Magic ❌ | Playwright ✅"
+
+   Check for template flag: If `--template [name]` provided:
    - Load template from templates/[name].json
    - Pre-fill common answers
    - Skip to focus questions only
@@ -22,13 +42,14 @@ Begin gathering requirements for: $ARGUMENTS
    - Simple (3-4 questions): "basic", "simple", "standard" keywords
    - Moderate (5-6 questions): "custom", "enhanced" keywords
    - Complex (7-10 questions): "enterprise", "comprehensive", "advanced" keywords
+   - If complexity >= 0.7 and Sequential-Thinking available → Enable for deep analysis
    
-   Detect domain:
-   - Authentication: "auth", "login", "sign" → auth-specific questions
-   - API: "api", "endpoint", "rest" → API-specific questions
-   - UI: "component", "ui", "interface" → UI-specific questions
+   Detect domain and auto-enable relevant MCPs:
+   - Authentication: "auth", "login", "sign" → auth-specific questions + Context7 for auth libraries
+   - API: "api", "endpoint", "rest" → API-specific questions + Context7 for frameworks
+   - UI: "component", "ui", "interface" → UI-specific questions + Magic for prototypes
 
-### Phase 1: Initial Setup & Codebase Analysis
+### Phase 1: Initial Setup & MCP-Enhanced Codebase Analysis
 1. Create timestamp-based folder: requirements/YYYY-MM-DD-HHMM-[slug]
    - IMPORTANT: Use the ACTUAL current date and time from your environment
    - Format: Current year-month-day-hourminute (e.g., 2025-08-08-1445 for August 8, 2025 at 2:45 PM)
@@ -39,15 +60,28 @@ Begin gathering requirements for: $ARGUMENTS
    - 00-initial-request.md with the user's request
    - metadata.json with status tracking
 4. Read and update requirements/.current-requirement with folder name
-5. Use mcp__RepoPrompt__get_file_tree (if available) to understand overall structure:
-   - Get high-level architecture overview
-   - Identify main components and services
-   - Understand technology stack
-   - Note patterns and conventions
+5. Enhanced codebase analysis with MCPs:
+   - Use mcp__RepoPrompt__get_file_tree (if available) for structure
+   - If Sequential-Thinking enabled:
+     * Use mcp__sequential_thinking__create_thought_stream to systematically analyze the requirement
+     * Break down into components and identify dependencies
+     * Assess complexity and risks
+   - If Context7 enabled:
+     * Extract mentioned technologies/libraries from description
+     * Pre-validate feasibility with mcp__context7__resolve_library_id
+   - Document MCP insights in metadata.json under 'mcp_analysis' field
 
-### Phase 2: Context Discovery Questions (Adaptive)
-6. Generate adaptive number of questions based on complexity to understand the problem space:
-   - Questions informed by codebase structure
+### Phase 2: MCP-Powered Context Discovery Questions
+6. Generate adaptive questions with MCP intelligence:
+   - If Sequential-Thinking enabled:
+     * Use thought stream to identify knowledge gaps
+     * Generate targeted questions based on decomposition
+     * Prioritize by impact and dependencies
+   - If Context7 enabled:
+     * Skip questions about validated libraries
+     * Add questions about configuration options
+   - Questions informed by both codebase structure AND MCP analysis
+   - Show MCP contribution: "🧠 Sequential identified 3 critical decision points"
    - Questions about user interactions and workflows
    - Questions about similar features users currently use
    - Questions about data/content being worked with
@@ -65,36 +99,69 @@ Begin gathering requirements for: $ARGUMENTS
      * Impact indicator: (High/Medium/Low impact question)
    - Only after all questions are asked, record answers in 02-discovery-answers.md as received and update metadata.json. Not before.
 
-### Phase 3: Targeted Context Gathering (Autonomous)
-7. After all discovery questions answered:
-   - Use mcp__RepoPrompt__search (if available) to find specific files based on discovery answers
-   - Use mcp__RepoPrompt__set_selection and read_selected_files (if available) to batch read relevant code
+### Phase 3: MCP-Enhanced Targeted Context Gathering
+7. After all discovery questions answered, leverage MCPs for deep analysis:
+   - Use mcp__RepoPrompt__search (if available) to find specific files
+   - If Sequential-Thinking enabled:
+     * Create thought stream for implementation strategy
+     * Map dependencies and integration points
+     * Identify potential risks and blockers
+   - If Context7 enabled:
+     * Validate all mentioned libraries with mcp__context7__get_library_docs
+     * Gather best practices and constraints
+     * Check version compatibility and deprecations
+   - If Magic enabled (for UI requirements):
+     * Generate initial component specifications
+     * Create design system alignment notes
    - Deep dive into similar features and patterns
    - Analyze specific implementation details
-   - Use WebSearch and or context7 for best practices or library documentation
    - Document findings in 03-context-findings.md including:
      - Specific files that need modification
      - Exact patterns to follow
      - Similar features analyzed in detail
      - Technical constraints and considerations
      - Integration points identified
+     - **MCP Insights Section**:
+       * Sequential-Thinking: Component breakdown, risks, dependencies
+       * Context7: Library validations, best practices, constraints
+       * Magic: UI specifications, design tokens (if applicable)
+       * Playwright: Test scenarios outline (if applicable)
 
-### Phase 4: Expert Requirements Questions (Context-Aware)
-8. Now ask adaptive expert questions based on discovery answers:
-   - Generate 3-7 questions based on complexity and gaps
-   - Skip questions that don't apply based on previous answers
-   - Example: Skip SSO if no role-based access needed to 04-detail-questions.md
+### Phase 4: MCP-Informed Expert Requirements Questions
+8. Generate expert questions enhanced by MCP analysis:
+   - If Sequential-Thinking enabled:
+     * Questions address identified risks and dependencies
+     * Focus on critical decision points from decomposition
+   - If Context7 enabled:
+     * Questions about library-specific configuration
+     * Validate architectural alignment with best practices
+   - If Magic enabled:
+     * Questions about design system preferences
+     * Component interaction patterns
+   - Generate 3-7 questions based on complexity, gaps, and MCP insights
+   - Skip questions already answered by MCP validation
+   - Example: Skip library choice if Context7 validated compatibility
    - Questions should be as if you were speaking to the product manager who knows nothing of the code
    - These questions are meant to to clarify expected system behavior now that you have a deep understanding of the code
    - Include smart defaults based on codebase patterns
    - Ask questions one at a time
    - Only after all questions are asked, record answers in 05-detail-answers.md as received
 
-### Phase 5: Requirements Documentation
-9. Generate comprehensive requirements spec in 06-requirements-spec.md:
+### Phase 5: MCP-Comprehensive Requirements Documentation
+9. Generate MCP-enhanced requirements spec in 06-requirements-spec.md:
    - Problem statement and solution overview
    - Functional requirements based on all answers
    - Technical requirements with specific file paths
+   - **MCP-Validated Technical Stack**:
+     * Libraries validated by Context7 with versions
+     * Architectural patterns from Sequential-Thinking
+     * UI components specified by Magic (if applicable)
+   - **Risk Assessment** (from Sequential-Thinking):
+     * Technical risks and mitigation strategies
+     * Dependencies and integration points
+   - **Test Scenarios** (from Playwright if enabled):
+     * Acceptance test outlines
+     * Performance benchmarks
    - Implementation hints and patterns to follow
    - Acceptance criteria
    - Assumptions for any unanswered questions
@@ -137,7 +204,7 @@ Begin gathering requirements for: $ARGUMENTS
 - Document WHY each default makes sense
 - Use tools available if recommended ones aren't installed or available
 
-## Metadata Structure:
+## Enhanced Metadata Structure with MCP:
 ```json
 {
   "id": "feature-slug",
@@ -145,9 +212,43 @@ Begin gathering requirements for: $ARGUMENTS
   "lastUpdated": "ISO-8601-timestamp",
   "status": "active",
   "phase": "discovery|context|detail|complete",
+  "complexity_score": 0.0,
+  "mcp_enabled": {
+    "sequential_thinking": false,
+    "context7": false,
+    "magic": false,
+    "playwright": false
+  },
   "progress": {
     "discovery": { "answered": 0, "total": 5 },
     "detail": { "answered": 0, "total": 0 }
+  },
+  "mcp_analysis": {
+    "sequential_thinking": {
+      "timestamp": null,
+      "decomposition": [],
+      "dependencies": {},
+      "risks": [],
+      "confidence": 0
+    },
+    "context7": {
+      "timestamp": null,
+      "libraries_validated": [],
+      "best_practices": [],
+      "constraints": []
+    },
+    "magic": {
+      "timestamp": null,
+      "prototypes": [],
+      "components": [],
+      "design_tokens": []
+    },
+    "playwright": {
+      "timestamp": null,
+      "test_scenarios": [],
+      "performance_metrics": {},
+      "accessibility_score": null
+    }
   },
   "contextFiles": ["paths/of/files/analyzed"],
   "relatedFeatures": ["similar features found"]

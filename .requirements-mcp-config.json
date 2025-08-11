@@ -1,0 +1,93 @@
+{
+  "mcp_servers": {
+    "sequential_thinking": {
+      "enabled": true,
+      "auto_activate": {
+        "complexity_threshold": 0.7,
+        "keywords": ["complex", "system", "architecture", "workflow", "integration", "enterprise", "comprehensive"],
+        "min_components": 3
+      },
+      "timeout": 30000,
+      "cache_ttl": 1800,
+      "capabilities": [
+        "requirement_decomposition",
+        "dependency_mapping",
+        "risk_assessment",
+        "smart_question_generation"
+      ]
+    },
+    "context7": {
+      "enabled": true,
+      "auto_activate": {
+        "library_detection": true,
+        "framework_questions": true,
+        "keywords": ["api", "library", "framework", "package", "integration", "third-party"]
+      },
+      "cache_ttl": 3600,
+      "capabilities": [
+        "library_validation",
+        "best_practice_lookup",
+        "constraint_detection",
+        "documentation_retrieval"
+      ]
+    },
+    "magic": {
+      "enabled": true,
+      "auto_activate": {
+        "ui_components": true,
+        "design_system": true,
+        "keywords": ["ui", "component", "interface", "design", "frontend", "responsive", "mobile", "dashboard"]
+      },
+      "capabilities": [
+        "component_generation",
+        "prototype_creation",
+        "design_system_compliance",
+        "accessibility_validation"
+      ]
+    },
+    "playwright": {
+      "enabled": true,
+      "auto_activate": {
+        "testing_requirements": true,
+        "performance_validation": true,
+        "keywords": ["test", "validation", "performance", "e2e", "automation", "cross-browser"]
+      },
+      "capabilities": [
+        "test_scenario_generation",
+        "performance_testing",
+        "cross_browser_validation",
+        "accessibility_testing"
+      ]
+    }
+  },
+  "orchestration": {
+    "parallel_execution": true,
+    "max_concurrent": 3,
+    "fallback_enabled": true,
+    "retry_attempts": 2,
+    "retry_delay": 1000
+  },
+  "complexity_scoring": {
+    "simple": {
+      "range": [0, 0.3],
+      "question_count": [3, 4],
+      "indicators": ["basic", "simple", "standard", "straightforward"]
+    },
+    "moderate": {
+      "range": [0.3, 0.7],
+      "question_count": [5, 6],
+      "indicators": ["custom", "enhanced", "specific", "detailed"]
+    },
+    "complex": {
+      "range": [0.7, 1.0],
+      "question_count": [7, 10],
+      "indicators": ["enterprise", "comprehensive", "advanced", "complex", "system-wide"]
+    }
+  },
+  "learning": {
+    "enabled": true,
+    "min_samples": 3,
+    "confidence_threshold": 0.75,
+    "pattern_file": ".requirements-patterns.json"
+  }
+}
