@@ -38,8 +38,10 @@ This system transforms the requirements gathering process by:
 # End current requirement gathering
 /requirements-end
 
-# Update answers or add context
+# Update answers or add context to current requirement
 /requirements-update --question 3 "yes, but only for premium users"
+/requirements-update --add-context "Database is PostgreSQL 14"
+/requirements-update --refine-spec "Add rate limiting details"
 ```
 
 ## 📁 Repository Structure
@@ -182,29 +184,62 @@ Shows all requirements with their status.
 ```
 
 ### `/requirements-update [options]`
-Updates or modifies the current active requirement.
+Updates or modifies the current active requirement. Perfect for correcting answers, adding discovered context, or refining specifications during the gathering process.
 
 **Options:**
 - `--question N "answer"` - Update answer to question N
-- `--add-context "text"` - Add context to findings
-- `--refine-spec "text"` - Add clarification to spec
-- `--reset-phase [phase]` - Reset phase to re-answer
-- `--add-assumption "text"` - Add assumption to spec
+- `--add-context "text"` - Add technical context to findings
+- `--refine-spec "text"` - Add clarification to specifications
+- `--reset-phase [phase]` - Reset phase to re-answer questions
+- `--add-assumption "text"` - Document assumptions in spec
 
-**Examples:**
-```
+**Detailed Examples:**
+
+```bash
+# Change an answer after realizing a mistake
 /requirements-update --question 3 "yes, but only for premium users"
-/requirements-update --add-context "Found OAuth2 integration"
+
+# Add important technical context discovered during discussion
+/requirements-update --add-context "Found existing OAuth2 integration in auth service"
+/requirements-update --add-context "Database is PostgreSQL 14 with PostGIS enabled"
+
+# Clarify specific requirements in the spec
+/requirements-update --refine-spec "Rate limiting should be 100 requests per minute per user"
+/requirements-update --refine-spec "UI components must follow Material Design 3 guidelines"
+
+# Start over with discovery questions if you need to reconsider
 /requirements-update --reset-phase discovery
+
+# Document assumptions when information is unclear
+/requirements-update --add-assumption "Assuming AWS deployment based on current infrastructure"
+/requirements-update --add-assumption "Targeting modern browsers (Chrome 90+, Firefox 88+, Safari 14+)"
 ```
 
-### `/remind` or `/requirements-remind`
-Reminds AI to follow requirements gathering rules.
+**Common Use Cases:**
+1. **Correct Mistakes**: Changed your mind? Update any answer instantly
+2. **Add Discovery**: Found relevant code or APIs? Add as context
+3. **Clarify Details**: Need specific limits or rules? Refine the spec
+4. **Document Unknowns**: Uncertain about infrastructure? Add assumptions
+5. **Restart Section**: Want to reconsider? Reset the phase
+
+### `/requirements-remind` (alias: `/remind`)
+Quickly reminds the AI to follow requirements gathering rules and stay on track.
 
 **Use when AI:**
-- Asks open-ended questions
-- Starts implementing code
-- Asks multiple questions at once
+- Asks open-ended questions instead of yes/no format
+- Starts implementing code during requirements gathering
+- Asks multiple questions at once instead of one at a time
+- Goes off-track from the requirements process
+- Provides too much explanation instead of being concise
+
+**Example:**
+```bash
+# Quick reminder to get back on track
+/remind
+
+# Or use the full command
+/requirements-remind
+```
 
 ## 🎯 Features
 
