@@ -31,6 +31,9 @@ This system transforms the requirements gathering process by:
 
 # Quick reminder if AI strays off course
 /remind
+
+# Update answers or add context to current requirement
+/requirements-update --question 3 "yes, but only for premium users"
 ```
 
 ## 📁 Repository Structure
@@ -41,6 +44,7 @@ claude-requirements/
 │   ├── requirements-start.md    # Begin new requirement
 │   ├── requirements-status.md   # Check progress (alias: current)
 │   ├── requirements-current.md  # View active requirement
+│   ├── requirements-update.md   # Update answers or add context
 │   ├── requirements-end.md      # Finalize requirement
 │   ├── requirements-list.md     # List all requirements
 │   └── requirements-remind.md   # Remind AI of rules
@@ -155,6 +159,23 @@ Shows all requirements with their status.
 ✅ COMPLETE: dark-mode-toggle (Ready for implementation)
 🔴 ACTIVE: user-notifications (Discovery 3/5)
 ⚠️ INCOMPLETE: data-export (Paused 3 days ago)
+```
+
+### `/requirements-update [options]`
+Updates or modifies the current active requirement.
+
+**Options:**
+- `--question N "answer"` - Update answer to question N
+- `--add-context "text"` - Add context to findings
+- `--refine-spec "text"` - Add clarification to spec
+- `--reset-phase [phase]` - Reset phase to re-answer
+- `--add-assumption "text"` - Add assumption to spec
+
+**Examples:**
+```
+/requirements-update --question 3 "yes, but only for premium users"
+/requirements-update --add-context "Found OAuth2 integration"
+/requirements-update --reset-phase discovery
 ```
 
 ### `/remind` or `/requirements-remind`

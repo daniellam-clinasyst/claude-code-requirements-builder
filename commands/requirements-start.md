@@ -30,6 +30,10 @@ Begin gathering requirements for: $ARGUMENTS
 
 ### Phase 1: Initial Setup & Codebase Analysis
 1. Create timestamp-based folder: requirements/YYYY-MM-DD-HHMM-[slug]
+   - IMPORTANT: Use the ACTUAL current date and time from your environment
+   - Format: Current year-month-day-hourminute (e.g., 2025-08-08-1445 for August 8, 2025 at 2:45 PM)
+   - Month should be 01-12 (01=January, 08=August, 12=December)
+   - Use 24-hour format for time (0000-2359)
 2. Extract slug from $ARGUMENTS (e.g., "add user profile" → "user-profile")
 3. Create initial files:
    - 00-initial-request.md with the user's request
